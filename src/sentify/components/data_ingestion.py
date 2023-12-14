@@ -1,5 +1,6 @@
 import os 
 import gdown
+from zipfile import ZipFile
 from pathlib import Path 
 
 from logger import logger 
@@ -29,3 +30,14 @@ class DataIngestion:
             logger.info(f"{filename} downloaded! Saved at - {self.config.local_data_file}")
         else:
             logger.info(f"File already exists of size: {get_size(Path(self.config.local_data_file))}")
+
+    def extract_zip_data(self):
+        '''
+        extracts the data zip file
+        '''
+        create_directories([self.config.data_path])
+        with ZipFile(self.config.local_data_file, "r") as zip_ref:
+            zip_ref.extractall(self.config.data_path)
+            
+        logger.info(f"Extracted data in {self.config.data_path} path")
+        
