@@ -5,4 +5,8 @@ local_data_file: artifacts/data/data.zip
 data_path: artifacts/data
 
 pre_process_file: artifacts/data/twitter.csv
-post_process_files: ["artifacts/data/train.csv", "artifacts/data/valid.csv", "artifacts/data/test.csv"]
+post_process_files: ["train.csv", "valid.csv", "test.csv"]
+
+col_names: ["target", "ids", "date", "flag", "user", "text"]
+text_col: "text"
+target_col: "target"

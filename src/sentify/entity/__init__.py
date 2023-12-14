@@ -13,3 +13,11 @@ class DataValidationConfig:
     pre_process_file: Path 
     post_process_files: list 
     data_path: Path
+
+@dataclass(frozen=True)
+class DataPreparationConfig:
+    data_path: Path 
+    pre_process_file: Path 
+    col_names: list 
+    text_col: str 
+    target_col: str 

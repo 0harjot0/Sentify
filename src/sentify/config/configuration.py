@@ -2,7 +2,8 @@ from sentify.constants import *
 from utils.common import read_yaml, create_directories
 from sentify.entity import (
     DataIngestionConfig,
-    DataValidationConfig
+    DataValidationConfig, 
+    DataPreparationConfig
 )
 from pathlib import Path 
 
@@ -68,4 +69,27 @@ class ConfigurationManager:
         )
         
         return data_validation_config
+    
+    def get_data_preparation_config(self) -> DataPreparationConfig:
+        '''
+        creates and returns data preparation configuration 
+        
+        ## Parameters:
+        
+        None 
+        
+        ## Returns:
+        
+        data_preparation_config: DataPreparationConfig
+            the configuration for data preparation
+        '''
+        data_preparation_config = DataPreparationConfig(
+            data_path=self.config.data_path,
+            pre_process_file=self.config.pre_process_file,
+            col_names=self.config.col_names,
+            text_col=self.config.text_col, 
+            target_col=self.config.target_col
+        )
+        
+        return data_preparation_config
     
