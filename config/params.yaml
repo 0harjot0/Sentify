@@ -7,3 +7,5 @@ fasttext_argument:
   max_seq_length: 32
   epochs: 100
   word_count: 10000
+
+epochs: 10

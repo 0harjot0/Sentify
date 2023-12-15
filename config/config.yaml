@@ -1,8 +1,8 @@
-artifacts_root: artifacts
+artifacts_root: artifacts/
 
 source_url: 
 local_data_file: artifacts/data/data.zip
-data_path: artifacts/data
+data_path: artifacts/data/
 
 pre_process_file: artifacts/data/twitter.csv
 post_process_files: ["train.csv", "valid.csv", "test.csv"]
@@ -19,3 +19,4 @@ fasttext_tokenizer: artifacts/Fasttext/tokenizer.json
 bert_embedding: artifacts/BERT/embeddings/embeddings.npz
 
 labels: artifacts/labels/labels.npz
+models_path: artifacts/Models/

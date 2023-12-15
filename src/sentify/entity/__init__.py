@@ -38,3 +38,19 @@ class DataTransformationConfig:
     bert_embedding: Path
     labels: Path
     
+@dataclass(frozen=True)
+class ModelTrainerConfig:
+    activation: str 
+    optimizer: str 
+    metrics: list 
+    vector_size: int 
+    fasttext_seq_len: int 
+    bert_seq_len: int 
+    fasttext_embedding: Path 
+    fasttext_embed_matrix: Path 
+    bert_embedding: Path 
+    labels: Path 
+    fasttext_model: Path 
+    fasttext_tokenizer: Path 
+    epochs: int
+    models_path: Path

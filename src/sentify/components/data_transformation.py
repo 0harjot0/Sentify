@@ -64,7 +64,7 @@ class DataTransformation:
                  valid_bert_dense=self.X_valid_bert_dense_embeds, valid_bert_lstm=self.X_valid_bert_lstm_embeds,
                  test_bert_dense=self.X_test_bert_dense_embeds, test_bert_lstm=self.X_test_bert_lstm_embeds)
 
-        print("Embeddings saved at path - {}".format(self.config.bert_embedding))
+        logger.info("Embeddings saved at path - {}".format(self.config.bert_embedding))
         
     def __get_bert_embeddings(self, sequences):
         embeddings_merged = None
@@ -72,7 +72,7 @@ class DataTransformation:
         count = 0
         for seq in sequences:
             tokens = self.bert_tokenizer([seq], return_tensors='pt', padding="max_length",
-                                         truncation=True, max_length=self.MAX_SEQ_LENGTH)
+                                         truncation=True, max_length=self.config.bert_seq_len)
 
             with torch.no_grad():
                 outputs = self.bert_model(**tokens)
@@ -225,5 +225,5 @@ class DataTransformation:
                  train=self.y_train, test=self.y_test,
                  valid=self.y_valid)
 
-        print("Labels saved at path - {}".format(self.config.labels))
+        logger.info("Labels saved at path - {}".format(self.config.labels))
         

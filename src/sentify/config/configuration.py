@@ -4,7 +4,8 @@ from sentify.entity import (
     DataIngestionConfig,
     DataValidationConfig, 
     DataPreparationConfig, 
-    DataTransformationConfig
+    DataTransformationConfig, 
+    ModelTrainerConfig
 )
 from pathlib import Path 
 
@@ -125,4 +126,35 @@ class ConfigurationManager:
         
         return data_transformation_config
     
-    
+    def get_model_trainer_config(self) -> ModelTrainerConfig:
+        '''
+        creates and returns model trainer configuration 
+        
+        ## Parameters:
+        
+        None 
+        
+        ## Returns:
+        
+        model_trainer_config: ModelTrainerConfig
+            the configuration for model trainer
+        '''
+        model_trainer_config = ModelTrainerConfig(
+            activation=self.params.activation, 
+            optimizer=self.params.optimizer, 
+            metrics=self.params.metrics, 
+            vector_size=self.params.fasttext_argument.vector_size, 
+            fasttext_seq_len=self.params.fasttext_argument.max_seq_length, 
+            bert_seq_len=self.params.bert_argument.max_seq_length, 
+            fasttext_embedding=self.config.fasttext_embedding, 
+            fasttext_embed_matrix=self.config.fasttext_embed_matrix, 
+            bert_embedding=self.config.bert_embedding, 
+            labels=self.config.labels, 
+            fasttext_model=self.config.fasttext_model, 
+            fasttext_tokenizer=self.config.fasttext_tokenizer, 
+            epochs=self.params.epochs, 
+            models_path=self.config.models_path
+        )
+        
+        return model_trainer_config
+        
