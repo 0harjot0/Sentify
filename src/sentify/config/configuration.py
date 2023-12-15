@@ -5,7 +5,8 @@ from sentify.entity import (
     DataValidationConfig, 
     DataPreparationConfig, 
     DataTransformationConfig, 
-    ModelTrainerConfig
+    ModelTrainerConfig, 
+    TweetScraperConfig
 )
 from pathlib import Path 
 
@@ -158,3 +159,23 @@ class ConfigurationManager:
         
         return model_trainer_config
         
+    def get_tweet_scraper_config(self) -> TweetScraperConfig:
+        '''
+        creates and returns tweet scraper configuration 
+        
+        ## Parameters:
+        
+        None 
+        
+        ## Returns:
+        
+        tweet_scraper_config: TweetScraperConfig
+            the configuration for tweet scraping
+        '''
+        tweet_scraper_config = TweetScraperConfig(
+            log_level=self.params.log_level,
+            skip_instance_check=self.params.skip_instance_check
+        )
+        
+        return tweet_scraper_config
+    

@@ -54,3 +54,8 @@ class ModelTrainerConfig:
     fasttext_tokenizer: Path 
     epochs: int
     models_path: Path
+
+@dataclass(frozen=True)
+class TweetScraperConfig:
+    log_level: int 
+    skip_instance_check: int 

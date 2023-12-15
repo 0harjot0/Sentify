@@ -9,3 +9,8 @@ fasttext_argument:
   word_count: 10000
 
 epochs: 10
+
+ntscraper:
+  log_level: 1
+  skip_instance_check: False
+  
