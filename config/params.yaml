@@ -1,0 +1,9 @@
+bert_argument:
+  model_name: bert-base-multilingual-cased
+  max_seq_length: 32
+
+fasttext_argument:
+  vector_size: 300
+  max_seq_length: 32
+  epochs: 100
+  word_count: 10000

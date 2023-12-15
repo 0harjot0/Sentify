@@ -61,3 +61,20 @@ def get_size(path: Path) -> str:
     """
     size_in_kb = round(os.path.getsize(path)/1024)
     return f"~ {size_in_kb} KB"
+
+@ensure_annotations
+def check_files_exists(paths: list) -> bool:
+    '''
+    checks for the list of files for existence in the local paths
+    
+    Args:
+        paths (list): list of files with path
+    
+    Returns:
+        bool: True if all files exists, else False
+    '''
+    for file in check_files_exists:
+        if not os.path.exists(file):
+            return False 
+        
+    return True

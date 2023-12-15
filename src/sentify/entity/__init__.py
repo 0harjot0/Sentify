@@ -21,3 +21,20 @@ class DataPreparationConfig:
     col_names: list 
     text_col: str 
     target_col: str 
+    
+@dataclass(frozen=True)
+class DataTransformationConfig:
+    data_path: Path 
+    bert_seq_len: int 
+    fasttext_seq_len: int 
+    vector_size: int 
+    model_name: str 
+    fasttext_epochs: int 
+    word_count: int
+    fasttext_embedding: Path 
+    fasttext_embed_matrix: Path 
+    fasttext_model: Path 
+    fasttext_tokenizer: Path
+    bert_embedding: Path
+    labels: Path
+    

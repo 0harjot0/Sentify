@@ -10,3 +10,12 @@ post_process_files: ["train.csv", "valid.csv", "test.csv"]
 col_names: ["target", "ids", "date", "flag", "user", "text"]
 text_col: "text"
 target_col: "target"
+
+fasttext_embedding: artifacts/Fasttext/embeddings/embeddings.npz
+fasttext_embed_matrix: artifacts/Fasttext/embeddings/embed_matrix.npy
+fasttext_model: artifacts/Fasttext/fasttext.model
+fasttext_tokenizer: artifacts/Fasttext/tokenizer.json
+
+bert_embedding: artifacts/BERT/embeddings/embeddings.npz
+
+labels: artifacts/labels/labels.npz

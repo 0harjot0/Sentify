@@ -1,3 +1,7 @@
+torch
+transformers
+gensim
+tensorflow
 scikit-learn
 numpy
 pandas

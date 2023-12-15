@@ -3,7 +3,8 @@ from utils.common import read_yaml, create_directories
 from sentify.entity import (
     DataIngestionConfig,
     DataValidationConfig, 
-    DataPreparationConfig
+    DataPreparationConfig, 
+    DataTransformationConfig
 )
 from pathlib import Path 
 
@@ -92,4 +93,36 @@ class ConfigurationManager:
         )
         
         return data_preparation_config
+    
+    def get_data_transformation_config(self) -> DataTransformationConfig:
+        '''
+        creates and returns data transformation configuration 
+        
+        ## Parameters: 
+        
+        None 
+        
+        ## Returns:
+        
+        data_transformation_config: DataTransformationConfig
+            the configuration for data transformation 
+        '''
+        data_transformation_config = DataTransformationConfig(
+            data_path=self.config.data_path, 
+            bert_seq_len=self.params.bert_argument.max_seq_length,
+            fasttext_seq_len=self.params.fasttext_argument.max_seq_length,
+            vector_size=self.params.fasttext_argument.vector_size,
+            model_name=self.params.bert_argument.model_name,
+            fasttext_epochs=self.params.fasttext_argument.epochs, 
+            word_count=self.params.fasttext_argument.word_count,
+            fasttext_embedding=self.config.fasttext_embedding,
+            fasttext_embed_matrix=self.config.fasttext_embed_matrix,
+            fasttext_model=self.config.fasttext_model,
+            fasttext_tokenizer=self.config.fasttext_tokenizer,
+            bert_embedding=self.config.bert_embedding,
+            labels=self.config.labels
+        )
+        
+        return data_transformation_config
+    
     
