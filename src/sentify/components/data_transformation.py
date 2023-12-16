@@ -55,6 +55,14 @@ class DataTransformation:
         logger.info("mBERT Embeddings prepared.")
         
         self.__save_bert_embeddings()
+        self.__save_bert_model()
+        
+    def __save_bert_model(self):
+        self.bert_tokenizer.save_pretrained(self.config.bert_tokenizer)
+        logger.info("BERT Tokenizer saved at - {}".format(self.config.bert_tokenizer))
+        
+        self.bert_model.save_pretrained(self.config.bert_model)
+        logger.info("BERT Model saved at - {}".format(self.config.bert_model))
         
     def __save_bert_embeddings(self):
         create_directories(self.config.bert_embedding)

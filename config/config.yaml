@@ -17,6 +17,8 @@ fasttext_model: artifacts/Fasttext/fasttext.model
 fasttext_tokenizer: artifacts/Fasttext/tokenizer.json
 
 bert_embedding: artifacts/BERT/embeddings/embeddings.npz
+bert_tokenizer: artifacts/BERT/tokenizer
+bert_model: artifacts/BERT/model
 
 labels: artifacts/labels/labels.npz
 models_path: artifacts/Models/

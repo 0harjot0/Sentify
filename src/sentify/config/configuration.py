@@ -6,7 +6,8 @@ from sentify.entity import (
     DataPreparationConfig, 
     DataTransformationConfig, 
     ModelTrainerConfig, 
-    TweetScraperConfig
+    TweetScraperConfig, 
+    ModelPredictionConfig
 )
 from pathlib import Path 
 
@@ -122,6 +123,8 @@ class ConfigurationManager:
             fasttext_model=self.config.fasttext_model,
             fasttext_tokenizer=self.config.fasttext_tokenizer,
             bert_embedding=self.config.bert_embedding,
+            bert_tokenizer=self.config.bert_tokenizer,
+            bert_model=self.config.bert_model,
             labels=self.config.labels
         )
         
@@ -178,4 +181,31 @@ class ConfigurationManager:
         )
         
         return tweet_scraper_config
+    
+    def get_model_prediction_config(self) -> ModelPredictionConfig:
+        '''
+        creates and returns model prediction configuration 
+        
+        ## Parameters:
+        
+        None 
+        
+        ## Returns:
+        
+        model_prediction_config: ModelPredictionConfig
+            the configuration for model prediction 
+        '''
+        model_prediction_config = ModelPredictionConfig(
+            active_model=self.params.active_model, 
+            models_path=self.config.models_path, 
+            model_name=self.params.bert_argument.model_name, 
+            fasttext_model=self.config.fasttext_model, 
+            fasttext_tokenizer=self.config.fasttext_tokenizer, 
+            bert_tokenizer=self.config.bert_tokenizer, 
+            bert_model=self.config.bert_model,
+            fasttext_seq_len=self.params.fasttext_argument.max_seq_length,
+            bert_seq_len=self.params.bert_argument.max_seq_length
+        )
+        
+        return model_prediction_config
     

@@ -13,4 +13,5 @@ epochs: 10
 ntscraper:
   log_level: 1
   skip_instance_check: False
-  
+
+model_active: fasttext_cnn

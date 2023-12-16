@@ -36,6 +36,8 @@ class DataTransformationConfig:
     fasttext_model: Path 
     fasttext_tokenizer: Path
     bert_embedding: Path
+    bert_tokenizer: Path 
+    bert_model: Path 
     labels: Path
     
 @dataclass(frozen=True)
@@ -59,3 +61,15 @@ class ModelTrainerConfig:
 class TweetScraperConfig:
     log_level: int 
     skip_instance_check: int 
+    
+@dataclass(frozen=True)
+class ModelPredictionConfig:
+    active_model: str 
+    models_path: Path 
+    model_name: str 
+    fasttext_model: Path 
+    fasttext_tokenizer: Path 
+    bert_tokenizer: Path 
+    bert_model: Path 
+    fasttext_seq_len: int
+    bert_seq_len: int 
