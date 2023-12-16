@@ -65,15 +65,15 @@ class ModelTrainer:
         )
     
     def __load_fasttext_model(self):
-        fname = get_tmpfile(self.config.fasttext_model)    
-        model = FastText.load(fname)
+        # fname = get_tmpfile(self.config.fasttext_model)
+        model = FastText.load(self.config.fasttext_model)
         
         with open(self.config.fasttext_tokenizer, "r") as file:
             tokenizer = tf.keras.preprocessing.text.tokenizer_from_json(
                 json.load(file)
             )
             
-        return tokenizer, model 
+        return model, tokenizer
         
     def __load_bert_embedding(self):
         numpy_file = np.load(self.config.bert_embedding)
@@ -110,7 +110,7 @@ class ModelTrainer:
         ) 
         
     def __save_model(self, model, filename: str):
-        create_directories(self.config.models_path)
+        create_directories([self.config.models_path])
         
         save_file = os.path.join(self.config.models_path, filename+".keras")
         model.save(save_file)
@@ -123,11 +123,11 @@ class ModelTrainer:
             f1 = f1_score(y_test, y_pred)
             roc_auc = roc_auc_score(y_test, y_pred)
 
-            logger.info("Accuracy - ", accuracy)
-            logger.info("Precision - ", precision)
-            logger.info("Recall - ", recall)
-            logger.info("F1 - ", f1)
-            logger.info("Roc-Auc - ", roc_auc)
+            logger.info(f"Accuracy - {accuracy}")
+            logger.info(f"Precision - {precision}")
+            logger.info(f"Recall - {recall}")
+            logger.info(f"F1 - {f1}")
+            logger.info(f"Roc-Auc - {roc_auc}")
 
             return accuracy, precision, recall, f1, roc_auc
         except Exception as e:
@@ -569,9 +569,11 @@ class ModelTrainer:
                                                np.round(model.predict(X_test)))
 
             elif model_type == 'fasttext':
-                _, X_train, _, X_valid, _, X_test, embed_matrix = self.__load_fasttext_embedding()
-                y_train, y_valid, y_test = self.__load_labels()
+                # _, X_train, _, X_valid, _, X_test, embed_matrix = self.__load_fasttext_embedding()
+                # y_train, y_valid, y_test = self.__load_labels()
                 _, tokenizer = self.__load_fasttext_model()
+                
+                print(len(tokenizer.word_index))
                 
                 model = tf.keras.models.Sequential([
                     Input(shape=(self.config.fasttext_seq_len, )),

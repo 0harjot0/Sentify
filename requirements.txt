@@ -10,3 +10,4 @@ flask
 gdown
 ensure
 python-box
+-e .

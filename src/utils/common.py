@@ -73,7 +73,7 @@ def check_files_exists(paths: list) -> bool:
     Returns:
         bool: True if all files exists, else False
     '''
-    for file in check_files_exists:
+    for file in paths:
         if not os.path.exists(file):
             return False 
         

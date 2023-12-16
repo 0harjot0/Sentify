@@ -37,10 +37,13 @@ class DataPreparation:
         text_col = self.config.text_col
         target_col = self.config.target_col
         for codec in CODECS:
-            dataset = pd.read_csv(self.config.pre_process_file, 
-                                  encoding=codec, 
-                                  sep=',', 
-                                  names=self.config.col_names)
+            try:
+                dataset = pd.read_csv(self.config.pre_process_file, 
+                                    encoding=codec, 
+                                    sep=',', 
+                                    names=self.config.col_names)
+            except:
+                continue
         
         logger.info(f"Loaded the dataset from {self.config.pre_process_file} using encoding - {codec}")
         

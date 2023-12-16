@@ -5,7 +5,7 @@ bert_argument:
 fasttext_argument:
   vector_size: 300
   max_seq_length: 32
-  epochs: 100
+  epochs: 1
   word_count: 10000
 
 epochs: 10
@@ -15,3 +15,6 @@ ntscraper:
   skip_instance_check: False
 
 model_active: fasttext_cnn
+activation: relu
+optimizer: adam
+metrics: ["accuracy"]

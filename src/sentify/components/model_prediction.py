@@ -100,8 +100,8 @@ class ModelPrediction:
         return embeddings
             
     def __load_fasttext_model(self):
-        fname = get_tmpfile(self.config.fasttext_model)
-        model = FastText.load(fname)
+        # fname = get_tmpfile(self.config.fasttext_model)
+        model = FastText.load(self.config.fasttext_model)
         
         with open(self.config.fasttext_tokenizer, 'r') as file:
             tokenizer = tf.keras.preprocessing.text.tokenizer_from_json(

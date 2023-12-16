@@ -30,7 +30,7 @@ class TrainingPipeline:
         try:
             logger.info("Started Model training and Data Transformation ")
             
-            self.__data_transformation()
+            self.__data_transformation(embed_type)
             
             model_trainer_config = self.config.get_model_trainer_config()
             model_trainer = ModelTrainer(model_trainer_config)
@@ -44,6 +44,8 @@ class TrainingPipeline:
                 scores = model_trainer.train_bilstm_model(embed_type, **kwargs)
             elif model_name == "cnn":
                 scores = model_trainer.train_cnn_model(embed_type, **kwargs)
+            else:
+                logger.info("Invalid model_name {}".format(model_name))
                 
             logger.info("Model Training Completed!")
             

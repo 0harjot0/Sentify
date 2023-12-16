@@ -24,6 +24,7 @@ class DataIngestion:
         '''
         downloads the data, if not already available at the configured location
         '''
+        create_directories([self.config.data_path])
         if not os.path.exists(self.config.local_data_file):
             filename = gdown.download(self.config.source_url, 
                                       self.config.local_data_file)

@@ -125,7 +125,8 @@ class ConfigurationManager:
             bert_embedding=self.config.bert_embedding,
             bert_tokenizer=self.config.bert_tokenizer,
             bert_model=self.config.bert_model,
-            labels=self.config.labels
+            labels=self.config.labels, 
+            embedding_paths=self.config.embedding_paths
         )
         
         return data_transformation_config

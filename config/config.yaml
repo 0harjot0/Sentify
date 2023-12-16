@@ -1,6 +1,6 @@
 artifacts_root: artifacts/
 
-source_url: 
+source_url: https://drive.google.com/uc?id=1B1JfG5bGH0vGlijL2n90DAeCoCLdD67o
 local_data_file: artifacts/data/data.zip
 data_path: artifacts/data/
 
@@ -15,6 +15,7 @@ fasttext_embedding: artifacts/Fasttext/embeddings/embeddings.npz
 fasttext_embed_matrix: artifacts/Fasttext/embeddings/embed_matrix.npy
 fasttext_model: artifacts/Fasttext/fasttext.model
 fasttext_tokenizer: artifacts/Fasttext/tokenizer.json
+embedding_paths: ["artifacts/Fasttext/embeddings/", "artifacts/BERT/embeddings/", "artifacts/labels/"]
 
 bert_embedding: artifacts/BERT/embeddings/embeddings.npz
 bert_tokenizer: artifacts/BERT/tokenizer

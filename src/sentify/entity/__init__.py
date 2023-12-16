@@ -39,6 +39,7 @@ class DataTransformationConfig:
     bert_tokenizer: Path 
     bert_model: Path 
     labels: Path
+    embedding_paths: list
     
 @dataclass(frozen=True)
 class ModelTrainerConfig:
