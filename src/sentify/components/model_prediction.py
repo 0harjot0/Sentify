@@ -91,6 +91,7 @@ class ModelPrediction:
                     seq_embedding = np.mean(word_vectors, axis=0)
                 
                 embeddings.append(seq_embedding)
+            embeddings = np.array(embeddings)
         else:
             embeddings = tokenizer.texts_to_sequences(input_sequences)
             embeddings = tf.keras.preprocessing.sequence.pad_sequences(

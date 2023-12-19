@@ -14,7 +14,11 @@ ntscraper:
   log_level: 1
   skip_instance_check: False
 
-model_active: fasttext_cnn
 activation: relu
 optimizer: adam
 metrics: ["accuracy"]
+
+log_level: 1
+skip_instance_check: False
+
+active_model: fasttext_dense

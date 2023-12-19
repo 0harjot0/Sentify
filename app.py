@@ -70,21 +70,40 @@ def scrape():
         response = scraper.scrape_tweets(query, mode, number)
 
         return render_template("tweets.html", response=response)
+
+@app.route('/predict', methods=['GET', 'POST'])
+def predict():
+    if request.method == 'GET':
+        return render_template('predict_initial.html')
+    else:
+        text = request.form.get('text')
+        # texts = ["Hello this is a good example", "this is a bad example", "this is a positive statement", "This is a negative statement"]
+        
+        score = predictor.predict([text])
+        
+        return render_template("prediction.html", score=score)
     
 @app.route('/test', methods=['POST'])
-def scrape_analyze():
-    query = request.json['query']
-    mode = request.json['mode']
-    number = int(request.json['number'])
+def test():
+    query = request.form.get('query')
+    mode = request.form.get('mode')
+    number = int(request.form.get('number'))
     
     response = scraper.scrape_tweets(query, mode, number)
     predictions = predictor.predict([tweet['text'] for tweet in response])
     
+    weighted_score = 0
+    total_likes = 0
+    print(predictions)
     for i in range(len(predictions)):
-        response[i]['prediction'] = predictions[i]
+        response[i]['prediction'] = predictions[i][0]
+        weighted_score += response[i]['stats']['likes'] * response[i]['prediction']
+        total_likes += response[i]['stats']['likes']
     
-    return jsonify({response})
+    weighted_score /= total_likes
+    
+    return render_template("results.html", response=response, weighted_score=weighted_score)
         
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", debug=True)
+    app.run(host="0.0.0.0", debug=False)
     
