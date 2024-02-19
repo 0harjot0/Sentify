@@ -12,9 +12,9 @@ text_col: "text"
 target_col: "target"
 
 fasttext_embedding: artifacts/Fasttext/embeddings/embeddings.npz
-fasttext_embed_matrix: artifacts/Fasttext/embeddings/embed_matrix.npy
-fasttext_model: artifacts/Fasttext/fasttext.model
-fasttext_tokenizer: artifacts/Fasttext/tokenizer.json
+fasttext_embed_matrix: artifacts/Test/embeddings.npy
+fasttext_model: artifacts/Test/fasttext_combine.model
+fasttext_tokenizer: artifacts/Test/keras_combine_tokenizer.json
 embedding_paths: ["artifacts/Fasttext/embeddings/", "artifacts/BERT/embeddings/", "artifacts/labels/"]
 
 bert_embedding: artifacts/BERT/embeddings/embeddings.npz

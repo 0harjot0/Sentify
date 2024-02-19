@@ -3,7 +3,8 @@ Weighted Profile Score - {{ weighted_score }}
 {% for result in response %}
 
     <p>Text - {{ result['text'] }}</p>
-    <p>Sentiment Score - {{ result['prediction'] }} --{% if result['prediction'] > 0.6 %} Positive {% elif result ['prediction'] > 0.4 %} Neutral {% else %} Negative {% endif %}</p>
+    <p><b>Sentiment Classes -</b> {{ result['sentiment_prediction'] }} </p>
+    <p><b>Emotion Classes -</b> {{ result['emotion_prediction'] }} </p>
     <br><br><br><br>
 
 {% endfor %}

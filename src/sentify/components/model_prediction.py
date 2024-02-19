@@ -12,11 +12,12 @@ import os
 
 
 class ModelPrediction:
-    def __init__(self, config: ModelPredictionConfig):
+    def __init__(self, config: ModelPredictionConfig, model: str):
         '''
         creates an instance for prediction using trained model on text sequence
         '''
         self.config = config
+        self.active_model = model
         
     def predict(self, input_sequences: list[str]):
         '''
@@ -32,10 +33,10 @@ class ModelPrediction:
         prediction: list[float]
             the predictions in likelihood for positive or negative sentiment
         '''
-        if "fasttext" in self.config.active_model:
+        if "fasttext" in self.active_model:
             embeddings = self.__get_fasttext_embeddings(input_sequences)
             
-        elif "bert" in self.config.active_model:
+        elif "bert" in self.active_model:
             embeddings = self.__get_bert_embeddings(input_sequences)
             
         else:
@@ -44,6 +45,7 @@ class ModelPrediction:
             
             embeddings = [embeddings_bert, embeddings_fasttext]
         
+        print()
         model = self.__load_prediction_model()
         
         predictions = model.predict(embeddings)
@@ -71,7 +73,7 @@ class ModelPrediction:
                 embeddings_merged = np.append(
                     embeddings_merged, cls_embeddings, axis=0)
         
-        if "dense" in self.config.active_model:
+        if "dense" in self.active_model:
             return embeddings_merged
 
         return np.array(embeddings_hidden)
@@ -79,7 +81,7 @@ class ModelPrediction:
     def __get_fasttext_embeddings(self, input_sequences: list[str]):
         tokenizer, embed_model = self.__load_fasttext_model()
             
-        if "dense" in self.config.active_model:
+        if "dense" in self.active_model:
             embeddings = []
             for seq in input_sequences:
                 processed_seq = simple_preprocess(seq)
@@ -132,7 +134,7 @@ class ModelPrediction:
     
     def __load_prediction_model(self):
         model = tf.keras.models.load_model(
-            os.path.join(self.config.models_path, self.config.active_model+".keras")
+            os.path.join(self.config.models_path, self.active_model)
         )
         
         return model 
