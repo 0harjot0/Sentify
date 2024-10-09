@@ -6,9 +6,9 @@ with open("README.md", "r", encoding="utf-8") as file:
 __version__ = "0.0.0"
 
 REPO_NAME = "Sentify"
-AUTHOR_USER_NAME = "Subodh7976"
+AUTHOR_USER_NAME = "Harjot"
 SRC_REPO = "sentify"
-AUTHOR_EMAIL = "s.subodh7976@gmail.com"
+AUTHOR_EMAIL = "harjotbrar490@gmail.com"
 
 setuptools.setup(
     name=SRC_REPO, 
